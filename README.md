@@ -88,7 +88,7 @@ INSERT INTO tmimata VALUES
 (123,01,'david'),
 (123,02,'Mary');
 
-# We use this script to put some users in our database
+# We use this script to put some roles in our database
 
 CREATE TABLE IF NOT EXISTS `user` (
  `username` varchar(50) NOT NULL,
