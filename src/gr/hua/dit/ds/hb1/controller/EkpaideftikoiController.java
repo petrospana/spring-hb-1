@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class EkpaideftikoiController {
 	@Autowired
 	private EkpaideftikoiDAO ekpaideftikoiDAO;
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/list")
 	public String listEkpaideftikoi(Model model) {
 
@@ -46,6 +48,7 @@ public class EkpaideftikoiController {
 
 	
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/add")
 	public String addTeacher() {
 		return "ekpaideftikoi-form";
@@ -66,6 +69,7 @@ public class EkpaideftikoiController {
 
 //--------------------------------------------------------------------------------------------------
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -16,7 +16,7 @@ import gr.hua.dit.ds.hb1.entity.Aitiseis;
 
 
 @Controller
-@RequestMapping("/atiseis")
+@RequestMapping("/aitiseis")
 public class AitiseisController {
 	
 	@Autowired
@@ -32,21 +32,8 @@ public class AitiseisController {
         // add the customers to the model
         model.addAttribute("aitiseis", aitiseis);
         
-        return "listAllAitiseis";
+        return "aitiseis-list";
 	}
-    /****    
-   @GetMapping(value="/newAitisi", method = RequestMethod.POST)
-    public String addAitisi(HttpServletRequest request, Model model) {
-	   String applicantName = request.getParameter("studentName");
-	    theName = theName.toUpperCase();
-
-	    String result ="Hello " + theName;
-
-	    model.addAttribute("message",result);
-    	
-    	return "Aitisiform";
-	
-	}
-****/
+ 
 
 }

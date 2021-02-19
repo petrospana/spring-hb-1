@@ -29,7 +29,7 @@ public class MathitesController {
         // add the customers to the model
         model.addAttribute("mathites",mathites);
         
-        return "listAllMathites";
+        return "mathites-list";
 	
 	}
 }

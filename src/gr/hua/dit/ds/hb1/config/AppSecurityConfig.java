@@ -28,14 +28,29 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http.authorizeRequests() // authorize
+//				.antMatchers("/*").permitAll() // allow "/" to be seen without authentication
+//				.anyRequest().authenticated() // all requests are authenticated
+//				.and().formLogin().permitAll() // allow "/login"
+//				.defaultSuccessUrl("/", true) // set default page for success login
+//				.and().logout().permitAll(); // allow "logout"
+//	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests() // authorize
-				.antMatchers("/*").permitAll() // allow "/" to be seen without authentication
-				.anyRequest().authenticated() // all requests are authenticated
+				.antMatchers("/").hasAnyAuthority("ROLE_ADMIN", "ROLE_TEACHER", "ROLE_MANAGER")
+				.antMatchers("/ekpaideftikoi/list").hasAnyAuthority("ROLE_ADMIN", "ROLE_MANAGER")
+				.antMatchers("/ekpaideftikoi/add").hasAnyAuthority("ROLE_ADMIN", "ROLE_MANAGER")
+				.antMatchers("/ekpaideftikoi/register").hasAnyAuthority("ROLE_ADMIN", "ROLE_MANAGER")
+				.antMatchers("/diefthintes").hasAnyAuthority("ROLE_ADMIN", "ROLE_MANAGER")
+				.anyRequest()
+				.permitAll() // all requests are authenticated
 				.and().formLogin().permitAll() // allow "/login"
-				.defaultSuccessUrl("/", true) // set default page for success login
-				.and().logout().permitAll(); // allow "logout"
+				.defaultSuccessUrl("/home", true) // set default page for success login
+				.and().logout().permitAll();
 	}
 
 	@Bean
