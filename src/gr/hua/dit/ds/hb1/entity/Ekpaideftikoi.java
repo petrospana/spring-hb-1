@@ -1,6 +1,7 @@
 package gr.hua.dit.ds.hb1.entity;
 
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "ekpaideftikoi")
 public class Ekpaideftikoi {
 
+	
     @Id
     @Column(name = "username")
     private String username;
@@ -75,7 +77,7 @@ public class Ekpaideftikoi {
         return email;
     }
 
-    public void setEmail(String Email) {
+    public void setEmail(String email) {
         this.email = email;
     }
     
