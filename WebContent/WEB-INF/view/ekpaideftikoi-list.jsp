@@ -56,9 +56,9 @@
 						<td>${ekpaideftikoi.stathmos_id}</td>
 						<td>${ekpaideftikoi.password}</td>
 						<td><a
-							href="${pageContext.request.contextPath}/EkpaideftikoiController?action=EDIT&id=${ekpaideftikoi.username}">Edit</a>
+							href="${pageContext.request.contextPath}/ekpaideftikoi/update?username=${ekpaideftikoi.username}">Edit</a>
 							| <a
-							href="${pageContext.request.contextPath}/EkpaideftikoiController?action=DELETE&id=${ekpaideftikoi.username}">Delete</a>
+							href="${pageContext.request.contextPath}/ekpaideftikoi/delete?username=${ekpaideftikoi.username}">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>

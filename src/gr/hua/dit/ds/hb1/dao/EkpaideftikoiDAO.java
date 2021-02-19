@@ -13,6 +13,6 @@ public interface EkpaideftikoiDAO {
 	
 	void delete(String username);
 	
-	boolean update(Ekpaideftikoi ekpaideftikoi);
+	void update(Ekpaideftikoi ekpaideftikoi);
 
 }

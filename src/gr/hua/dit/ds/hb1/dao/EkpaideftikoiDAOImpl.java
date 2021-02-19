@@ -12,7 +12,6 @@ import gr.hua.dit.ds.hb1.util.DBConnectionUtil;
 
 import javax.transaction.Transactional;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,7 +23,7 @@ import java.util.List;
 
 @Repository
 public class EkpaideftikoiDAOImpl implements EkpaideftikoiDAO {
-	
+
 	Connection connection = null;
 	ResultSet resultSet = null;
 	Statement statement = null;
@@ -49,57 +48,44 @@ public class EkpaideftikoiDAOImpl implements EkpaideftikoiDAO {
 		return ekpaideftikoi;
 	}
 
-
 	@Override
 	public Ekpaideftikoi get(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	@Transactional
-    public void save(Ekpaideftikoi ekpaideftikoi) {
+	public void save(Ekpaideftikoi ekpaideftikoi) {
 		Session currentSession = sessionFactory.getCurrentSession();
 
 		// create a query
 		currentSession.save(ekpaideftikoi);
 
 		// return the results
-		
-    }
 
-//	@Override
-//	public boolean save(Ekpaideftikoi ekpaideftikoi) {
-//		boolean flag = false;
-//		try {
-////			INSERT INTO ergasia.ekpaideftikoi
-////			(first_name, last_name, email, stathmos_id, username, password)
-////			VALUES('', '', '', 0, '', '');
-//
-//			String sql = "INSERT INTO ekpaideftikoi(username, first_name, last_name, email, stathmos_id, password)VALUES"
-//					+ "('"+ekpaideftikoi.getUsername()+"', '"+ekpaideftikoi.getFirst_name()+"','"+ekpaideftikoi.getLast_name()+"','"+ekpaideftikoi.getEmail()+"', '"+ekpaideftikoi.getStathmos_id()+"', '"+ekpaideftikoi.getPassword()+"')";
-//			connection = DBConnectionUtil.openConnection();
-//			preparedStatement = connection.prepareStatement(sql);
-//			preparedStatement.executeUpdate();
-//			flag = true;
-//		}catch(SQLException ex) {
-//			ex.printStackTrace();
-//		}
-//		return flag;
-//	}
+	}
 
 	@Override
 	@Transactional
 	public void delete(String username) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		
-		currentSession.delete(username);
+		Ekpaideftikoi ekpaideftikoi;
+		ekpaideftikoi = (Ekpaideftikoi)currentSession.load(Ekpaideftikoi.class,username);
+	    currentSession.delete(ekpaideftikoi);
+
+	    //This makes the pending delete to be done
+	    currentSession.flush() ;
 	}
 
 	@Override
-	public boolean update(Ekpaideftikoi ekpaideftikoi) {
-		// TODO Auto-generated method stub
-		return false;
+	@Transactional
+	public void update(Ekpaideftikoi ekpaideftikoi) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		currentSession.saveOrUpdate(ekpaideftikoi);
+
 	}
 
 }
